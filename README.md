@@ -2,6 +2,10 @@
 
 🚧 In progress 🚧
 
+My version of **push_swap** School 42 project @ [Hive Helsinki](https://www.hive.fi/en/)
+
+Sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions.
+
 ## Summary
 
 This project will make you sort data on a stack, with a limited set of instructions, using, the lowest possible number of actions. To succeed you’ll have to manipulate various types of algorithms and choose the most appropriate solution (out of many) for an optimized data sorting.
