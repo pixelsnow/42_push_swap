@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:40:12 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 22:01:43 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/24 22:16:07 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void push(t_stack *s, t_node *new);
 t_node *pop(t_stack *s);
 t_node	*find_last(t_stack *s);
 void	push_to_last(t_stack *s, t_node *new);
+t_node	*shift(t_stack *s);
 void	delete_stack(t_stack **s);
 void	delete_push_swap(t_push_swap **stacks);
 void	print_stack(t_stack *s);
@@ -53,6 +54,10 @@ void pb(t_push_swap *stacks);
 void ra(t_push_swap *stacks);
 void rb(t_push_swap *stacks);
 void rr(t_push_swap *stacks);
+
+void rra(t_push_swap *stacks);
+void rrb(t_push_swap *stacks);
+void rrr(t_push_swap *stacks);
 
 # include <stdlib.h>
 # include <unistd.h>

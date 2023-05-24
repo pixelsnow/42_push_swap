@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:52:40 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 22:01:41 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/24 22:13:36 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,30 @@ void	push_to_last(t_stack *s, t_node *new)
 	s->size++;
 }
 
+t_node	*shift(t_stack *s)
+{
+	t_node	*tmp;
+	t_node	*res;
+	
+	if (!s || !s->head)
+		return (NULL);
+	// cases for non-empty list
+	s->size--;
+	tmp = s->head;
+	if (s->size == 1)
+	{
+		s->head = NULL;
+		return (tmp);
+	}
+	while (tmp->next->next)
+		tmp = tmp->next;
+	res = tmp->next;
+	tmp->next = NULL;
+	return (res);
+}
+
+// DESTRUCTORS
+
 void	clean_stack(t_stack *s)
 {
 	t_node	*tmp;
@@ -103,7 +127,6 @@ void	clean_stack(t_stack *s)
 	}
 	s->size = 0;
 }
-
 
 void	delete_stack(t_stack **s)
 {
@@ -120,6 +143,7 @@ void	delete_push_swap(t_push_swap **stacks)
 	*stacks = NULL;
 }
 
+// PRINT
 
 void	print_stack(t_stack *s)
 {
