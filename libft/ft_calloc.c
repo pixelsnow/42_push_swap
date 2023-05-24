@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 19:25:36 by vvagapov         ###   ########.fr       */
+/*   Created: 2022/11/03 21:09:36 by vvagapov          #+#    #+#             */
+/*   Updated: 2022/12/19 23:05:53 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_push_swap	*info;
-	
-	write(1, "hi", 2);
-	info = create_push_swap();
-	push(info->a, 1);
-	push(info->a, 2);
- 	print_stack(info->a);
-	return (0);
+	char	*res;
+	size_t	num_of_bytes;
+
+	num_of_bytes = size * count;
+	if (size && count && (num_of_bytes % size || num_of_bytes % count))
+		return (NULL);
+	res = malloc(num_of_bytes);
+	if (!res)
+		return (NULL);
+	ft_bzero(res, num_of_bytes);
+	return ((void *)res);
 }

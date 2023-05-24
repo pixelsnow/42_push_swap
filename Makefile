@@ -6,31 +6,41 @@
 #    By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 18:38:50 by vvagapov          #+#    #+#              #
-#    Updated: 2023/05/22 18:42:59 by vvagapov         ###   ########.fr        #
+#    Updated: 2023/05/24 19:19:58 by vvagapov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = push_swap.c
+SRC = push_swap.c \
+		swap.c \
+		stack_utils.c
 
 OBJ = $(SRC:%.c=%.o)
 
-FLAGS = -Wall -Wextra -Werror
-INC = -I.
+LIBFT = libft/libft.a
+LIBFTDIR = libft
 
-all: $(NAME)
+FLAGS = -Wall -Wextra -Werror
+INC = -I. -I$(LIBFTDIR)
+
+all: $(LIBFT) $(NAME) 
 	
-$(NAME): $(OBJ) 
-	cc $(OBJ) $(INC) -o $(NAME)
+$(NAME): $(OBJ)
+	cc $(OBJ) $(INC) $(LIBFT) -o $(NAME)
+
+$(LIBFT): 
+	make -C $(LIBFTDIR)
 
 %.o: %.c
 	cc -c $(FLAGS) $^
 
 clean:
+	make clean -C $(LIBFTDIR)
 	rm -f $(OBJ)
 
 fclean: clean
+	make fclean -C $(LIBFTDIR)
 	rm -f $(NAME)
 
 re: fclean all

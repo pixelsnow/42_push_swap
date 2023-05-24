@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 19:25:36 by vvagapov         ###   ########.fr       */
+/*   Created: 2022/11/20 22:22:16 by vvagapov          #+#    #+#             */
+/*   Updated: 2022/11/20 22:39:16 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_push_swap	*info;
-	
-	write(1, "hi", 2);
-	info = create_push_swap();
-	push(info->a, 1);
-	push(info->a, 2);
- 	print_stack(info->a);
-	return (0);
+	t_list	*res;
+	t_list	*node;
+
+	res = NULL;
+	while (lst)
+	{
+		node = ft_lstnew(f(lst->content));
+		if (!node)
+		{
+			ft_lstclear(&res, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&res, node);
+		lst = lst->next;
+	}
+	return (res);
 }

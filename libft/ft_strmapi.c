@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 19:25:36 by vvagapov         ###   ########.fr       */
+/*   Created: 2022/11/12 21:59:43 by vvagapov          #+#    #+#             */
+/*   Updated: 2022/12/19 22:35:17 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_push_swap	*info;
-	
-	write(1, "hi", 2);
-	info = create_push_swap();
-	push(info->a, 1);
-	push(info->a, 2);
- 	print_stack(info->a);
-	return (0);
+	size_t	str_len;
+	char	*res;
+
+	if (!s || !f)
+		return (NULL);
+	str_len = ft_strlen(s);
+	res = (char *)malloc(sizeof(char) * (str_len + 1));
+	if (!res)
+		return (NULL);
+	res[str_len] = '\0';
+	while (str_len > 0)
+	{
+		str_len--;
+		res[str_len] = f(str_len, s[str_len]);
+	}
+	return (res);
 }

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 19:25:36 by vvagapov         ###   ########.fr       */
+/*   Created: 2022/11/20 21:44:59 by vvagapov          #+#    #+#             */
+/*   Updated: 2022/11/20 22:47:57 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_push_swap	*info;
-	
-	write(1, "hi", 2);
-	info = create_push_swap();
-	push(info->a, 1);
-	push(info->a, 2);
- 	print_stack(info->a);
-	return (0);
+	t_list	*last;
+
+	if (!lst)
+		return ;
+	last = ft_lstlast(*lst);
+	if (!last)
+		*lst = new;
+	else
+		last->next = new;
 }

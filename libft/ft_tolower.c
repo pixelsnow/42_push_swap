@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 19:25:36 by vvagapov         ###   ########.fr       */
+/*   Created: 2022/10/27 23:14:48 by vvagapov          #+#    #+#             */
+/*   Updated: 2022/12/19 22:56:03 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	main(void)
+int	ft_tolower(int c)
 {
-	t_push_swap	*info;
-	
-	write(1, "hi", 2);
-	info = create_push_swap();
-	push(info->a, 1);
-	push(info->a, 2);
- 	print_stack(info->a);
-	return (0);
+	unsigned char	res;
+
+	res = (unsigned char)c;
+	if (res >= 'A' && res <= 'Z')
+		return (c + 'a' - 'A');
+	else
+		return (c);
 }

@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:52:40 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 14:36:36 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:23:10 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@ t_node  *create_elem(int data)
 	t_node *res;
 
 	res = malloc(sizeof(t_node));
-	if (res)
-	{
-		res->next = NULL;
-		res->data = data;
-	}
-	else
+	if (!res)
 		return (NULL); // memory allocation error
+	res->next = NULL;
+	res->data = data;
 	return (res);
 }
 
@@ -32,10 +29,21 @@ t_stack	*create_stack(void)
 	t_stack	*res;
 
 	res = malloc(sizeof(t_stack));
-	if (res)
-		res->head = NULL;
-	else
+	if (!res)
 		return (NULL); // memory allocation error
+	res->head = NULL;
+	return (res);
+}
+
+t_push_swap	*create_push_swap(void)
+{
+	t_push_swap	*res;
+
+	res = malloc(sizeof(t_push_swap));
+	if (!res)
+		return (NULL); // memory allocation error
+	res->a = NULL;
+	res->b = NULL;
 	return (res);
 }
 
@@ -62,7 +70,7 @@ t_node *pop(t_stack *s)
 	return (res);
 }
 
-void clean_stack(t_stack *s)
+void	clean_stack(t_stack *s)
 {
 	t_node	*tmp;
 	
@@ -75,7 +83,7 @@ void clean_stack(t_stack *s)
 }
 
 
-void delete_stack(t_stack **s)
+void	delete_stack(t_stack **s)
 {
 	clean_stack(*s);
 	free(*s);
@@ -83,16 +91,17 @@ void delete_stack(t_stack **s)
 }
 
 
-void print_stack(t_stack *s)
+void	print_stack(t_stack *s)
 {
 	t_node *tmp;
 
 	tmp = s->head;
+	ft_putstr_fd("hi", 1);
 	while (tmp)
 	{
-		ft_putstr(tmp->data);
-		ft_putstr("->");
+		ft_putnbr_fd(tmp->data, 1);
+		ft_putstr_fd("->", 1);
 		tmp = tmp->next;
 	}
-	ft_putchar('\n');
+	ft_putchar_fd('\n', 1);
 }
