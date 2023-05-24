@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:52:40 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 19:23:10 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/24 19:37:49 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@ t_node  *create_elem(int data)
 	t_node *res;
 
 	res = malloc(sizeof(t_node));
+	ft_putstr_fd("creating\n", 1);
 	if (!res)
 		return (NULL); // memory allocation error
+	ft_putstr_fd("created\n", 1);
 	res->next = NULL;
 	res->data = data;
 	return (res);
@@ -39,11 +41,12 @@ t_push_swap	*create_push_swap(void)
 {
 	t_push_swap	*res;
 
+	ft_putstr_fd("create\n", 1);
 	res = malloc(sizeof(t_push_swap));
 	if (!res)
 		return (NULL); // memory allocation error
-	res->a = NULL;
-	res->b = NULL;
+	res->a = create_stack();
+	res->b = create_stack();
 	return (res);
 }
 
@@ -51,10 +54,14 @@ void push(t_stack *s, int data)
 {
 	t_node	*tmp;
 	
+	ft_putstr_fd("push\n", 1);
 	tmp = create_elem(data);
+	ft_putstr_fd("pushsdsg\n", 1);
 	if (!tmp)
 		return; // memory allocation error
+	ft_putstr_fd("tmp->next\n", 1);
 	tmp->next = s->head;
+	ft_putstr_fd("rthsrthsrth\n", 1);
 	s->head = tmp;
 }
 
@@ -95,8 +102,9 @@ void	print_stack(t_stack *s)
 {
 	t_node *tmp;
 
+	ft_putstr_fd("print\n", 1);
 	tmp = s->head;
-	ft_putstr_fd("hi", 1);
+	
 	while (tmp)
 	{
 		ft_putnbr_fd(tmp->data, 1);
