@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:40:12 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/22 18:50:47 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:46:40 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_node
 typedef struct s_stack
 {
 	struct s_node	*head;
+	int				size;
 }					t_stack;
 
 # include <stdlib.h>
