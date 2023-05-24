@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:52:40 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/22 19:03:25 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:36:36 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_node  *create_elem(int data)
 		res->data = data;
 	}
 	else
-		return (NULL);
+		return (NULL); // memory allocation error
 	return (res);
 }
 
@@ -33,56 +33,55 @@ t_stack	*create_stack(void)
 
 	res = malloc(sizeof(t_stack));
 	if (res)
-	{
 		res->head = NULL;
-	}
+	else
+		return (NULL); // memory allocation error
 	return (res);
 }
 
-/* 
 void push(t_stack *s, int data)
 {
 	t_node	*tmp;
 	
 	tmp = create_elem(data);
+	if (!tmp)
+		return; // memory allocation error
 	tmp->next = s->head;
 	s->head = tmp;
-	if (!s->head)
-	{
-		s->head = tmp;
-	}
-	else
-	{
-		
-		q->last = tmp;
-	}
 }
 
-void de_queue(t_stack *q)
+t_node *pop(t_stack *s)
 {
-	t_node *tmp;
+	t_node	*res;
+
+	if (!s || !s->head)
+		return (NULL);
+	res = s->head;
+	res->next = NULL;
+	s->head = s->head->next;
+	return (res);
+}
+
+void clean_stack(t_stack *s)
+{
+	t_node	*tmp;
 	
-	if (!q->head)
-		return ;
-	tmp = q->head;
-	q->head = q->head->next;
-	if (tmp->data)
-		free(tmp->data);
-	free(tmp);
+	while (s->head)
+	{
+		tmp = s->head;
+		s->head = s->head->next;
+		free(tmp);
+	}
 }
 
-void clean_queue(t_stack *q)
-{
-	while (q->head)
-		de_queue(q);
-}
 
-void delete_queue(t_stack **s)
+void delete_stack(t_stack **s)
 {
+	clean_stack(*s);
 	free(*s);
 	s = NULL;
 }
- */
+
 
 void print_stack(t_stack *s)
 {
