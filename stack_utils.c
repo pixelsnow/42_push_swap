@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:52:40 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 19:37:49 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/24 21:15:34 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ t_node  *create_elem(int data)
 	t_node *res;
 
 	res = malloc(sizeof(t_node));
-	ft_putstr_fd("creating\n", 1);
 	if (!res)
 		return (NULL); // memory allocation error
-	ft_putstr_fd("created\n", 1);
 	res->next = NULL;
+	res->rank = -1;
 	res->data = data;
 	return (res);
 }
@@ -34,6 +33,7 @@ t_stack	*create_stack(void)
 	if (!res)
 		return (NULL); // memory allocation error
 	res->head = NULL;
+	res->size = 0;
 	return (res);
 }
 
@@ -41,7 +41,6 @@ t_push_swap	*create_push_swap(void)
 {
 	t_push_swap	*res;
 
-	ft_putstr_fd("create\n", 1);
 	res = malloc(sizeof(t_push_swap));
 	if (!res)
 		return (NULL); // memory allocation error
@@ -50,19 +49,13 @@ t_push_swap	*create_push_swap(void)
 	return (res);
 }
 
-void push(t_stack *s, int data)
+void push(t_stack *s, t_node *new)
 {
-	t_node	*tmp;
-	
-	ft_putstr_fd("push\n", 1);
-	tmp = create_elem(data);
-	ft_putstr_fd("pushsdsg\n", 1);
-	if (!tmp)
+	if (!new)
 		return; // memory allocation error
-	ft_putstr_fd("tmp->next\n", 1);
-	tmp->next = s->head;
-	ft_putstr_fd("rthsrthsrth\n", 1);
-	s->head = tmp;
+	new->next = s->head;
+	s->head = new;
+	s->size++;
 }
 
 t_node *pop(t_stack *s)
@@ -72,8 +65,9 @@ t_node *pop(t_stack *s)
 	if (!s || !s->head)
 		return (NULL);
 	res = s->head;
-	res->next = NULL;
 	s->head = s->head->next;
+	res->next = NULL;
+	s->size--;
 	return (res);
 }
 
@@ -87,6 +81,7 @@ void	clean_stack(t_stack *s)
 		s->head = s->head->next;
 		free(tmp);
 	}
+	s->size = 0;
 }
 
 
@@ -102,14 +97,15 @@ void	print_stack(t_stack *s)
 {
 	t_node *tmp;
 
-	ft_putstr_fd("print\n", 1);
 	tmp = s->head;
-	
+	ft_putstr_fd("size = ", 1);
+	ft_putnbr_fd(s->size, 1);
+	ft_putstr_fd("	", 1);
 	while (tmp)
 	{
 		ft_putnbr_fd(tmp->data, 1);
-		ft_putstr_fd("->", 1);
+		ft_putstr_fd(" -> ", 1);
 		tmp = tmp->next;
 	}
-	ft_putchar_fd('\n', 1);
+	ft_putstr_fd("\n", 1);
 }

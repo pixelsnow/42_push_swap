@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 17:58:44 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 20:45:54 by vvagapov         ###   ########.fr       */
+/*   Created: 2023/05/24 20:55:31 by vvagapov          #+#    #+#             */
+/*   Updated: 2023/05/24 21:13:56 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack *stack)
+void	move_from_stack_to_stack(t_stack *from, t_stack *to)
 {
 	t_node	*tmp;
-	
-	if (stack->size < 2)
+
+	tmp = pop(from);
+
+	if (!tmp)
 		return ;
-	tmp = stack->head;
-	stack->head = tmp->next;
-	tmp->next = stack->head->next;
-	stack->head->next = tmp;
+	push(to, tmp);
 }
 
-void	sa(t_push_swap *stacks)
+void pa(t_push_swap *stacks)
 {
-	swap(stacks->a);
+	move_from_stack_to_stack(stacks->b, stacks->a);
 }
 
-void	sb(t_push_swap *stacks)
+void pb(t_push_swap *stacks)
 {
-	swap(stacks->b);
-}
-
-void	ss(t_push_swap *stacks)
-{
-	swap(stacks->a);
-	swap(stacks->b);
+	move_from_stack_to_stack(stacks->a, stacks->b);
 }
