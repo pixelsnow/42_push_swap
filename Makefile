@@ -6,7 +6,7 @@
 #    By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 18:38:50 by vvagapov          #+#    #+#              #
-#    Updated: 2023/05/24 21:10:07 by vvagapov         ###   ########.fr        #
+#    Updated: 2023/05/24 21:45:46 by vvagapov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = push_swap
 SRC = push_swap.c \
 		swap.c \
 		stack_utils.c \
-		push.c
+		push.c \
+		rotate.c
 
 OBJ = $(SRC:%.c=%.o)
 
