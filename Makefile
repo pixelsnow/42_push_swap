@@ -6,7 +6,7 @@
 #    By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 18:38:50 by vvagapov          #+#    #+#              #
-#    Updated: 2023/05/24 21:45:46 by vvagapov         ###   ########.fr        #
+#    Updated: 2023/05/25 15:23:27 by vvagapov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ SRC = push_swap.c \
 		swap.c \
 		stack_utils.c \
 		push.c \
-		rotate.c
+		rotate.c \
+		reverse_rotate.c \
+		constructors.c \
+		destructors.c \
+		printf.c \
 
 OBJ = $(SRC:%.c=%.o)
 

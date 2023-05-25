@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 15:25:07 by vvagapov         ###   ########.fr       */
+/*   Created: 2023/05/25 15:21:04 by vvagapov          #+#    #+#             */
+/*   Updated: 2023/05/25 15:24:20 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(void)
+void	print_stack(t_stack *s)
 {
-	t_push_swap	*info;
+	t_node	*tmp;
 
-	info = create_push_swap();
-	push(info->a, create_elem(1));
-	push(info->a, create_elem(2));
-	push(info->a, create_elem(3));
-	push(info->a, create_elem(4));
-	print_stack(info->a);
-	ra(info);
-	print_stack(info->a);
-	rra(info);
-	print_stack(info->a);
-	delete_push_swap(&info);
-	return (0);
+	tmp = s->head;
+	ft_putstr_fd("size = ", 1);
+	ft_putnbr_fd(s->size, 1);
+	ft_putstr_fd("	", 1);
+	while (tmp)
+	{
+		ft_putnbr_fd(tmp->data, 1);
+		ft_putstr_fd(" -> ", 1);
+		tmp = tmp->next;
+	}
+	ft_putstr_fd("\n", 1);
 }

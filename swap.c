@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:58:44 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 20:45:54 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:26:27 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	swap(t_stack *stack)
 {
 	t_node	*tmp;
-	
+
 	if (stack->size < 2)
 		return ;
 	tmp = stack->head;

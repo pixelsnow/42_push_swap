@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 20:55:31 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/24 21:13:56 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:24:36 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@ void	move_from_stack_to_stack(t_stack *from, t_stack *to)
 	t_node	*tmp;
 
 	tmp = pop(from);
-
 	if (!tmp)
 		return ;
 	push(to, tmp);
 }
 
-void pa(t_push_swap *stacks)
+void	pa(t_push_swap *stacks)
 {
 	move_from_stack_to_stack(stacks->b, stacks->a);
 }
 
-void pb(t_push_swap *stacks)
+void	pb(t_push_swap *stacks)
 {
 	move_from_stack_to_stack(stacks->a, stacks->b);
 }

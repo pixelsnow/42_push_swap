@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 15:25:07 by vvagapov         ###   ########.fr       */
+/*   Created: 2023/05/25 15:18:07 by vvagapov          #+#    #+#             */
+/*   Updated: 2023/05/25 15:25:33 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(void)
+void	reverse_rotate(t_stack *s)
 {
-	t_push_swap	*info;
+	if (s->size < 2)
+		return ;
+	push(s, shift(s));
+}
 
-	info = create_push_swap();
-	push(info->a, create_elem(1));
-	push(info->a, create_elem(2));
-	push(info->a, create_elem(3));
-	push(info->a, create_elem(4));
-	print_stack(info->a);
-	ra(info);
-	print_stack(info->a);
-	rra(info);
-	print_stack(info->a);
-	delete_push_swap(&info);
-	return (0);
+void	rra(t_push_swap *stacks)
+{
+	reverse_rotate(stacks->a);
+}
+
+void	rrb(t_push_swap *stacks)
+{
+	reverse_rotate(stacks->b);
+}
+
+void	rrr(t_push_swap *stacks)
+{
+	reverse_rotate(stacks->a);
+	reverse_rotate(stacks->b);
 }
