@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 21:56:19 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 21:57:13 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,9 @@ void	sort_push_swap(t_push_swap *stacks)
 int	main(int ac, char **av)
 {
 	t_push_swap	*info;
-	int			input_status;
 
 	info = create_push_swap();
-	input_status = parse_input(ac, av, info);
-	if (input_status == 1)
+	if (parse_input(ac, av, info))
 	{
 		ft_putstr_fd("Error\n", 2);
 		delete_push_swap(&info);
