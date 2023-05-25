@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:52:40 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 19:47:32 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:53:32 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	unshift(t_stack *s, t_node *new)
 		return ;
 	if (!s->head)
 		s->head = new;
-	else 
+	else
 		s->tail->next = new;
 	s->tail = new;
 	s->size++;

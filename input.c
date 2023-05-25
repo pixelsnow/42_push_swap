@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:47:21 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 20:50:03 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:54:33 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	delete_split(char	**splits)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (splits[i])
@@ -25,7 +25,7 @@ void	delete_split(char	**splits)
 	free(splits);
 }
 
-static long long ft_simple_atoi(const char *str)
+static long long	ft_simple_atoi(const char *str)
 {
 	char		sign;
 	long long	res;
@@ -40,7 +40,7 @@ static long long ft_simple_atoi(const char *str)
 	return (res * sign);
 }
 
-static int parse_item(const char *item, t_push_swap *stacks)
+static int	parse_item(const char *item, t_push_swap *stacks)
 {
 	int			i;
 	long long	num;
@@ -68,7 +68,7 @@ int	parse_input(int ac, char **av, t_push_swap *stacks)
 	char	**split;
 	int		i;
 	int		j;
-	
+
 	i = 1;
 	while (i < ac) // Looping through input arguments 
 	{
