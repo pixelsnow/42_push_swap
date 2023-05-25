@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 20:37:13 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:41:14 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ int parse_item(const char *item, t_push_swap *stacks)
 	while (item[i])
 	{
 		if (!ft_isdigit(item[i]))
-			return (1); // If there is any non-digits, abort
+			return (1); // If there's any non-digits, abort
 		i++;
 	}
-	// Everything is OK, parse and add to the end of A stack
 	num = ft_simple_atoi(item);
 	if (num < INT_MIN || num > INT_MAX)
-		return (1);
+		return (1); // If it's out of int range, abort
 	unshift(stacks->a, create_elem((int)num));
 	return (0);
 }
@@ -74,7 +73,7 @@ int	parse_input(int ac, char **av, t_push_swap *stacks)
 	while (i < ac) // Looping through input arguments 
 	{
 		split = ft_split(av[i], ' '); // Creating a split
-		if (!split)
+		if (!split || !split[0])
 			return (1);
 		j = 0;
 		while (split[j]) // Looping through split strings
