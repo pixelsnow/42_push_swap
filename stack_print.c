@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:21:04 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 22:40:14 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 23:11:10 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	print_stack(t_stack *s)
 	{
 		ft_putnbr_fd(tmp->data, 1);
 		ft_putstr_fd("(", 1);
-		ft_putnbr_fd(tmp->index, 1);
+		ft_putnbr_fd(tmp->rank, 1);
 		ft_putstr_fd(")", 1);
 		ft_putstr_fd(" -> ", 1);
 		tmp = tmp->next;
