@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:40:12 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 20:36:22 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:48:46 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_node		*shift(t_stack *s);
 
 void		delete_stack(t_stack **s);
 void		delete_push_swap(t_push_swap **stacks);
+void		delete_split(char	**splits);
 
 void		print_push_swap(t_push_swap *stacks);
 
@@ -63,6 +64,9 @@ void		rr(t_push_swap *stacks);
 void		rra(t_push_swap *stacks);
 void		rrb(t_push_swap *stacks);
 void		rrr(t_push_swap *stacks);
+
+int			parse_input(int ac, char **av, t_push_swap *stacks);
+
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648

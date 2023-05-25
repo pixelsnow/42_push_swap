@@ -6,21 +6,22 @@
 #    By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 18:38:50 by vvagapov          #+#    #+#              #
-#    Updated: 2023/05/25 15:36:18 by vvagapov         ###   ########.fr        #
+#    Updated: 2023/05/25 20:51:31 by vvagapov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC = push_swap.c \
-		swap.c \
+		input.c \
+		stack_swap.c \
 		stack_utils.c \
-		push.c \
-		rotate.c \
-		reverse_rotate.c \
-		constructors.c \
-		destructors.c \
-		print.c \
+		stack_push.c \
+		stack_rotate.c \
+		stack_reverse_rotate.c \
+		stack_constructors.c \
+		stack_destructors.c \
+		stack_print.c \
 
 OBJ = $(SRC:%.c=%.o)
 
