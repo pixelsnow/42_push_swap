@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:47:21 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 20:56:19 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 22:07:36 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,20 @@ static long long	ft_simple_atoi(const char *str)
 	return (res * sign);
 }
 
+int	check_repeats(t_push_swap *stacks, int num)
+{
+	t_node	*tmp;
+
+	tmp = stacks->a->head;
+	while (tmp)
+	{
+		if (tmp->data == num)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
 static int	parse_item(const char *item, t_push_swap *stacks)
 {
 	int			i;
@@ -57,8 +71,8 @@ static int	parse_item(const char *item, t_push_swap *stacks)
 		i++;
 	}
 	num = ft_simple_atoi(item);
-	if (num < INT_MIN || num > INT_MAX)
-		return (1); // If it's out of int range, abort
+	if (num < INT_MIN || num > INT_MAX || check_repeats(stacks, (int)num))
+		return (1); // If it's out of int range or there is repeats, abort
 	unshift(stacks->a, create_elem((int)num));
 	return (0);
 }
