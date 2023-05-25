@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 15:25:07 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:37:01 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,14 @@ int	main(void)
 	push(info->a, create_elem(3));
 	push(info->a, create_elem(4));
 	print_stack(info->a);
-	ra(info);
+	rrb(info);
+	pb(info);
+	rrb(info);
 	print_stack(info->a);
+	print_stack(info->b);
 	rra(info);
+	print_stack(info->a);
+	ra(info);
 	print_stack(info->a);
 	delete_push_swap(&info);
 	return (0);
