@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 22:38:19 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 22:57:10 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,34 @@ void	sort_push_swap(t_push_swap *stacks)
 		sort_five(stacks);
 }
 
+void	rank_min(t_push_swap *stacks, int i)
+{
+	t_node	*min;
+	t_node	*tmp;
+
+	tmp = stacks->a->head;
+	min = NULL;
+	while (tmp)
+	{
+		if (tmp->rank == -1 && (!min || tmp->data < min->data))
+				min = tmp;
+		tmp = tmp->next;
+	}
+	min->rank = i;
+}
+
+void	assign_ranks(t_push_swap *stacks)
+{
+	int	i;
+
+	i = 0;
+	while (i < stacks->a->size)
+	{
+		rank_min(stacks, i);
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_push_swap	*info;
@@ -54,6 +82,8 @@ int	main(int ac, char **av)
 		delete_push_swap(&info);
 		return (1);
 	}
+	print_push_swap(info);
+	assign_ranks(info);
 	print_push_swap(info);
 	sort_push_swap(info);
 	print_push_swap(info);
