@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:18:59 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 15:23:40 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:34:27 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_stack	*create_stack(void)
 	if (!res)
 		return (NULL);
 	res->head = NULL;
+	res->tail = NULL;
 	res->size = 0;
 	return (res);
 }

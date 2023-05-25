@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:52:40 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 15:26:07 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:47:32 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	push(t_stack *s, t_node *new)
 	if (!new)
 		return ;
 	new->next = s->head;
+	if (!s->head)
+		s->tail = new;
 	s->head = new;
 	s->size++;
 }
@@ -29,11 +31,14 @@ t_node	*pop(t_stack *s)
 		return (NULL);
 	res = s->head;
 	s->head = s->head->next;
+	if (!s->head)
+		s->tail = NULL;
 	res->next = NULL;
 	s->size--;
 	return (res);
 }
 
+/* 
 t_node	*find_last(t_stack *s)
 {
 	t_node	*res;
@@ -44,13 +49,17 @@ t_node	*find_last(t_stack *s)
 	while (res->next)
 		res = res->next;
 	return (res);
-}
+} */
 
-void	push_to_last(t_stack *s, t_node *new)
+void	unshift(t_stack *s, t_node *new)
 {
-	if (!s || !s->head || !new)
+	if (!s || !new)
 		return ;
-	find_last(s)->next = new;
+	if (!s->head)
+		s->head = new;
+	else 
+		s->tail->next = new;
+	s->tail = new;
 	s->size++;
 }
 
@@ -66,11 +75,13 @@ t_node	*shift(t_stack *s)
 	if (s->size == 1)
 	{
 		s->head = NULL;
+		s->tail = NULL;
 		return (tmp);
 	}
 	while (tmp->next->next)
 		tmp = tmp->next;
 	res = tmp->next;
 	tmp->next = NULL;
+	s->tail = tmp;
 	return (res);
 }

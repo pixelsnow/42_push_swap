@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 21:25:12 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 15:42:53 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 18:55:33 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rotate(t_stack *s)
 {
 	if (s->size < 2)
 		return ;
-	push_to_last(s, pop(s));
+	unshift(s, pop(s));
 }
 
 void	ra(t_push_swap *stacks)
