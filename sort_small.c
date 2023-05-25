@@ -6,13 +6,13 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 22:12:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 22:14:07 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/25 22:16:38 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort_semantic(t_push_swap *stacks, int first, int second, int third)
+static void	three_semantic(t_push_swap *stacks, int first, int second, int third)
 {
 	if (first > second)
 	{
@@ -43,7 +43,7 @@ static void	sort_semantic(t_push_swap *stacks, int first, int second, int third)
 
 void	sort_three(t_push_swap *stacks)
 {
-	sort_semantic(stacks, stacks->a->head->data,
+	three_semantic(stacks, stacks->a->head->data,
 		stacks->a->head->next->data, stacks->a->head->next->next->data);
 }
 
