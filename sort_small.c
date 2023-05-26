@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:41:54 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/26 14:42:21 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/26 19:17:10 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	find_mins(t_push_swap *stacks, int	*min1, int	*min2)
 {
 	t_node	*tmp;
-	
+
 	*min1 = 5;
 	*min2 = 5;
 	tmp = stacks->a->head;
@@ -25,7 +25,8 @@ void	find_mins(t_push_swap *stacks, int	*min1, int	*min2)
 		{
 			*min2 = *min1;
 			*min1 = tmp->rank;
-		} else if (tmp->rank < *min2)
+		}
+		else if (tmp->rank < *min2)
 		{
 			*min2 = tmp->rank;
 		}
@@ -53,7 +54,7 @@ void	sort_four(t_push_swap *stacks)
 {
 	int		min1;
 	int		min2;
-	
+
 	find_mins(stacks, &min1, &min2);
 	while (stacks->a->head->rank != min1)
 		ra(stacks);

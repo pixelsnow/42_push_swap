@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_small.c                                       :+:      :+:    :+:   */
+/*   sort_tiny.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 22:12:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/26 13:53:15 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/26 19:18:15 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	three_semantic(t_push_swap *stacks, int first, int second, int third)
+static void	three_nice(t_push_swap *stacks, int first, int second, int third)
 {
 	if (first > second)
 	{
@@ -43,7 +43,7 @@ static void	three_semantic(t_push_swap *stacks, int first, int second, int third
 
 void	sort_three(t_push_swap *stacks)
 {
-	three_semantic(stacks, stacks->a->head->data,
+	three_nice(stacks, stacks->a->head->data,
 		stacks->a->head->next->data, stacks->a->head->next->next->data);
 }
 

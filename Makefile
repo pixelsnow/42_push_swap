@@ -6,7 +6,7 @@
 #    By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 18:38:50 by vvagapov          #+#    #+#              #
-#    Updated: 2023/05/26 14:43:23 by vvagapov         ###   ########.fr        #
+#    Updated: 2023/05/26 19:12:47 by vvagapov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC = push_swap.c \
 		rank.c \
 		sort_tiny.c \
 		sort_small.c \
+		sort_large.c \
 		stack_swap.c \
 		stack_utils.c \
 		stack_push.c \
@@ -24,7 +25,6 @@ SRC = push_swap.c \
 		stack_reverse_rotate.c \
 		stack_constructors.c \
 		stack_destructors.c \
-		stack_print.c \
 
 OBJ = $(SRC:%.c=%.o)
 
