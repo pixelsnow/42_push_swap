@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:47:21 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 22:10:26 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:49:43 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ int	parse_input(int ac, char **av, t_push_swap *stacks)
 	{
 		split = ft_split(av[i], ' '); // Creating a split
 		if (!split || !split[0])
+		{
+			delete_split(split);
 			return (1);
+		}
 		j = 0;
 		while (split[j]) // Looping through split strings
 		{
