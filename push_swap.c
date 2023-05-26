@@ -6,29 +6,68 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 23:06:26 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:39:40 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_top_elem(t_push_swap *stacks)
+void	find_mins(t_push_swap *stacks, int	*min1, int	*min2)
 {
-	if (stacks->a->head->data > stacks->a->tail->data)
+	t_node	*tmp;
+	
+	*min1 = 5;
+	*min2 = 5;
+	tmp = stacks->a->head;
+	while (tmp)
+	{
+		if (tmp->rank < *min1)
+		{
+			*min2 = *min1;
+			*min1 = tmp->rank;
+		} else if (tmp->rank < *min2)
+		{
+			*min2 = tmp->rank;
+		}
+		tmp = tmp->next;
+	}
+}
+
+void	extract_mins(t_push_swap *stacks)
+{
+	int		min1;
+	int		min2;
+	
+	find_mins(stacks, &min1, &min2);
+	while (stacks->a->head->rank != min1 && stacks->a->head->rank != min2)
 		ra(stacks);
-	// TODO
+	pb(stacks);
+	while (stacks->a->head->rank != min1 && stacks->a->head->rank != min2)
+		ra(stacks);
+	pb(stacks);
+	if (stacks->b->head->rank < stacks->b->head->next->rank)
+		rb(stacks);
+}
+
+void	sort_four(t_push_swap *stacks)
+{
+	int		min1;
+	int		min2;
+	
+	find_mins(stacks, &min1, &min2);
+	while (stacks->a->head->rank != min1)
+		ra(stacks);
+	pb(stacks);
+	sort_three(stacks);
+	pa(stacks);
 }
 
 void	sort_five(t_push_swap *stacks)
 {
-	pb(stacks);
-	pb(stacks);
+	extract_mins(stacks);
 	sort_three(stacks);
 	pa(stacks);
-	sort_top_elem(stacks);
 	pa(stacks);
-	sort_top_elem(stacks);
-	// TODO
 }
 
 void	sort_push_swap(t_push_swap *stacks)
@@ -39,8 +78,11 @@ void	sort_push_swap(t_push_swap *stacks)
 		sort_two(stacks);
 	else if (stacks->a->size < 4)
 		sort_three(stacks);
+	else if (stacks->a->size < 5)
+		sort_four(stacks);
 	else if (stacks->a->size < 6)
 		sort_five(stacks);
+	
 }
 
 void	rank_min(t_push_swap *stacks, int i)
