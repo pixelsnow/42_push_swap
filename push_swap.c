@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/26 16:14:47 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:44:43 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,24 @@ void	sift_by_nth_bit(t_push_swap *stacks, int shift)
 	}
 }
 
-void	move_b_to_a(t_push_swap *stacks)
+void	move_b_to_a_conditional(t_push_swap *stacks, int shift)
+{
+	int		i;
+	int		iterations;
+
+	iterations = stacks->b->size;
+	i = 0;
+	while (i < iterations)
+	{
+		if (stacks->b->head->rank & (1 << shift))
+			pa(stacks);
+		else
+			rb(stacks);
+		i++;
+	}
+}
+
+void	move_b_to_a_full(t_push_swap *stacks)
 {
 	while (stacks->b->size)
 		pa(stacks);
@@ -69,7 +86,10 @@ void	sort_large(t_push_swap *stacks)
 	while (i < shift_limit)
 	{
 		sift_by_nth_bit(stacks, i);
-		move_b_to_a(stacks);
+		if (i < shift_limit - 1)
+			move_b_to_a_conditional(stacks, i + 1);
+		else
+			move_b_to_a_full(stacks);
 		i++;
 	}
 }
@@ -119,8 +139,10 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	assign_ranks(stacks);
+	//print_push_swap(stacks);
 	if (!is_sorted(stacks))
 		sort_push_swap(stacks);
+	//print_push_swap(stacks);
 	delete_push_swap(&stacks);
 	return (0);
 }
