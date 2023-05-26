@@ -6,15 +6,72 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/26 14:43:00 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/26 15:34:12 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	calculate_shift_limit(int	num)
+{
+	int	i;
+
+	i = 0;
+	while (1 << i <= num)
+		i++;
+	return (i);
+}
+
+void	sift_by_nth_bit(t_push_swap *stacks, int shift)
+{
+	int		i;
+	int		iterations;
+
+	iterations = stacks->a->size;
+	ft_putstr_fd("how many nodes to move: ", 1);
+	ft_putnbr_fd(iterations, 1);
+	ft_putstr_fd("\n", 1);
+	i = 0;
+	while (i < iterations)
+	{
+		ft_putstr_fd("i: ", 1);
+		ft_putnbr_fd(i, 1);
+		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("(1 << shift): ", 1);
+		ft_putnbr_fd(1 << shift, 1);
+		ft_putstr_fd("\n", 1);
+		ft_putstr_fd("condition: ", 1);
+		ft_putnbr_fd(stacks->a->head->rank & (1 << shift), 1);
+		ft_putstr_fd("\n", 1);
+		if (stacks->a->head->rank & (1 << shift))
+			ra(stacks);
+		else
+			pb(stacks);
+		i++;
+	}
+}
+
+void	move_b_to_a(t_push_swap *stacks)
+{
+	while (stacks->b->size)
+		pa(stacks);
+}
+
 void	sort_large(t_push_swap *stacks)
 {
-	(void) stacks;
+	int	shift_limit;
+	int	i;
+
+	shift_limit = calculate_shift_limit(stacks->a->size);
+	ft_putnbr_fd(shift_limit, 1);
+	ft_putstr_fd("\n", 1);
+	i = 0;
+	while (i < shift_limit)
+	{
+		sift_by_nth_bit(stacks, i);
+		move_b_to_a(stacks);
+		i++;
+	}
 }
 
 void	sort_push_swap(t_push_swap *stacks)
@@ -35,20 +92,20 @@ void	sort_push_swap(t_push_swap *stacks)
 
 int	main(int ac, char **av)
 {
-	t_push_swap	*info;
+	t_push_swap	*stacks;
 
-	info = create_push_swap();
-	if (parse_input(ac, av, info))
+	stacks = create_push_swap();
+	if (parse_input(ac, av, stacks))
 	{
 		ft_putstr_fd("Error\n", 2);
-		delete_push_swap(&info);
+		delete_push_swap(&stacks);
 		return (1);
 	}
-	print_push_swap(info);
-	assign_ranks(info);
-	print_push_swap(info);
-	sort_push_swap(info);
-	print_push_swap(info);
-	delete_push_swap(&info);
+	print_push_swap(stacks);
+	assign_ranks(stacks);
+	print_push_swap(stacks);
+	sort_push_swap(stacks);
+	print_push_swap(stacks);
+	delete_push_swap(&stacks);
 	return (0);
 }
