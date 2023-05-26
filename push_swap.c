@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:30:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/26 17:44:43 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/26 19:09:46 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,10 @@ void	sift_by_nth_bit(t_push_swap *stacks, int shift)
 	int		iterations;
 
 	iterations = stacks->a->size;
-	/* ft_putstr_fd("how many nodes to move: ", 1);
-	ft_putnbr_fd(iterations, 1);
-	ft_putstr_fd("\n", 1); */
 	i = 0;
+	
 	while (i < iterations)
 	{
-		/* ft_putstr_fd("i: ", 1);
-		ft_putnbr_fd(i, 1);
-		ft_putstr_fd("\n", 1);
-		ft_putstr_fd("(1 << shift): ", 1);
-		ft_putnbr_fd(1 << shift, 1);
-		ft_putstr_fd("\n", 1);
-		ft_putstr_fd("condition: ", 1);
-		ft_putnbr_fd(stacks->a->head->rank & (1 << shift), 1);
-		ft_putstr_fd("\n", 1); */
 		if (stacks->a->head->rank & (1 << shift))
 			ra(stacks);
 		else
@@ -68,6 +57,7 @@ void	move_b_to_a_conditional(t_push_swap *stacks, int shift)
 	}
 }
 
+
 void	move_b_to_a_full(t_push_swap *stacks)
 {
 	while (stacks->b->size)
@@ -80,11 +70,10 @@ void	sort_large(t_push_swap *stacks)
 	int	i;
 
 	shift_limit = calculate_shift_limit(stacks->a->size);
-/* 	ft_putnbr_fd(shift_limit, 1);
-	ft_putstr_fd("\n", 1); */
 	i = 0;
 	while (i < shift_limit)
 	{
+		
 		sift_by_nth_bit(stacks, i);
 		if (i < shift_limit - 1)
 			move_b_to_a_conditional(stacks, i + 1);
@@ -139,10 +128,8 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	assign_ranks(stacks);
-	//print_push_swap(stacks);
 	if (!is_sorted(stacks))
 		sort_push_swap(stacks);
-	//print_push_swap(stacks);
 	delete_push_swap(&stacks);
 	return (0);
 }
