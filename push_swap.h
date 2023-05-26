@@ -6,7 +6,7 @@
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 18:40:12 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/25 22:43:05 by vvagapov         ###   ########.fr       */
+/*   Updated: 2023/05/26 14:44:16 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,12 @@ void		rrb(t_push_swap *stacks);
 void		rrr(t_push_swap *stacks);
 
 int			parse_input(int ac, char **av, t_push_swap *stacks);
+void		assign_ranks(t_push_swap *stacks);
 
 void		sort_two(t_push_swap *stacks);
 void		sort_three(t_push_swap *stacks);
+void		sort_four(t_push_swap *stacks);
+void		sort_five(t_push_swap *stacks);
+void		sort_large(t_push_swap *stacks);
 
 #endif

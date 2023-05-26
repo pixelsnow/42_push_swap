@@ -5,50 +5,67 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvagapov <vvagapov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 22:12:42 by vvagapov          #+#    #+#             */
-/*   Updated: 2023/05/26 13:53:15 by vvagapov         ###   ########.fr       */
+/*   Created: 2023/05/26 14:41:54 by vvagapov          #+#    #+#             */
+/*   Updated: 2023/05/26 14:42:21 by vvagapov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	three_semantic(t_push_swap *stacks, int first, int second, int third)
+void	find_mins(t_push_swap *stacks, int	*min1, int	*min2)
 {
-	if (first > second)
+	t_node	*tmp;
+	
+	*min1 = 5;
+	*min2 = 5;
+	tmp = stacks->a->head;
+	while (tmp)
 	{
-		if (second > third)
+		if (tmp->rank < *min1)
 		{
-			sa(stacks);
-			rra(stacks);
-		}
-		else
+			*min2 = *min1;
+			*min1 = tmp->rank;
+		} else if (tmp->rank < *min2)
 		{
-			if (first > third)
-				ra(stacks);
-			else
-				sa(stacks);
+			*min2 = tmp->rank;
 		}
-	}
-	else if (second > third)
-	{
-		if (first > third)
-			rra(stacks);
-		else
-		{
-			sa(stacks);
-			ra(stacks);
-		}
+		tmp = tmp->next;
 	}
 }
 
-void	sort_three(t_push_swap *stacks)
+void	extract_mins(t_push_swap *stacks)
 {
-	three_semantic(stacks, stacks->a->head->data,
-		stacks->a->head->next->data, stacks->a->head->next->next->data);
+	int		min1;
+	int		min2;
+
+	find_mins(stacks, &min1, &min2);
+	while (stacks->a->head->rank != min1 && stacks->a->head->rank != min2)
+		ra(stacks);
+	pb(stacks);
+	while (stacks->a->head->rank != min1 && stacks->a->head->rank != min2)
+		ra(stacks);
+	pb(stacks);
+	if (stacks->b->head->rank < stacks->b->head->next->rank)
+		rb(stacks);
 }
 
-void	sort_two(t_push_swap *stacks)
+void	sort_four(t_push_swap *stacks)
 {
-	if (stacks->a->head->data > stacks->a->tail->data)
-		sa(stacks);
+	int		min1;
+	int		min2;
+	
+	find_mins(stacks, &min1, &min2);
+	while (stacks->a->head->rank != min1)
+		ra(stacks);
+	pb(stacks);
+	sort_three(stacks);
+	pa(stacks);
+}
+
+void	sort_five(t_push_swap *stacks)
+{
+	extract_mins(stacks);
+	sort_three(stacks);
+	pa(stacks);
+	pa(stacks);
 }
