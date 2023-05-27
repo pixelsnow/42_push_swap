@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rotate(t_stack *s)
+static void	rotate(t_stack *s)
 {
 	if (s->size < 2)
 		return ;

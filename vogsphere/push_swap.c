@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	sort_push_swap(t_push_swap *stacks)
+static void	sort_push_swap(t_push_swap *stacks)
 {
 	if (stacks->a->size < 2)
 		return ;
@@ -28,7 +28,7 @@ void	sort_push_swap(t_push_swap *stacks)
 		sort_large(stacks);
 }
 
-int	is_sorted(t_push_swap	*stacks)
+static int	is_sorted(t_push_swap	*stacks)
 {
 	int		min;
 	t_node	*tmp;

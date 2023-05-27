@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rank_min(t_push_swap *stacks, int i)
+static void	rank_min(t_push_swap *stacks, int i)
 {
 	t_node	*min;
 	t_node	*tmp;

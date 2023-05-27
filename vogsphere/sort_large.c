@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	calculate_shift_limit(int num)
+static int	calculate_shift_limit(int num)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ int	calculate_shift_limit(int num)
 	return (i);
 }
 
-void	sift_by_nth_bit(t_push_swap *stacks, int shift)
+static void	sift_by_nth_bit(t_push_swap *stacks, int shift)
 {
 	int		i;
 	int		iterations;
@@ -39,7 +39,7 @@ void	sift_by_nth_bit(t_push_swap *stacks, int shift)
 	}
 }
 
-void	move_b_to_a_conditional(t_push_swap *stacks, int shift)
+static void	move_b_to_a_conditional(t_push_swap *stacks, int shift)
 {
 	int		i;
 	int		iterations;
@@ -56,7 +56,7 @@ void	move_b_to_a_conditional(t_push_swap *stacks, int shift)
 	}
 }
 
-void	move_b_to_a_full(t_push_swap *stacks)
+static void	move_b_to_a_full(t_push_swap *stacks)
 {
 	while (stacks->b->size)
 		pa(stacks);

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	delete_split(char	**splits)
+static void	delete_split(char	**splits)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ static long long	ft_simple_atoi(const char *str)
 	return (res * sign);
 }
 
-int	check_repeats(t_push_swap *stacks, int num)
+static int	check_repeats(t_push_swap *stacks, int num)
 {
 	t_node	*tmp;
 

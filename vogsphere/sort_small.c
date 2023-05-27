@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	find_mins(t_push_swap *stacks, int	*min1, int	*min2)
+static void	find_mins(t_push_swap *stacks, int	*min1, int	*min2)
 {
 	t_node	*tmp;
 
@@ -34,7 +34,7 @@ void	find_mins(t_push_swap *stacks, int	*min1, int	*min2)
 	}
 }
 
-void	extract_mins(t_push_swap *stacks)
+static void	extract_mins(t_push_swap *stacks)
 {
 	int		min1;
 	int		min2;
